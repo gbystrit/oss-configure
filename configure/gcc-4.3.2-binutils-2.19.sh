@@ -6,4 +6,5 @@ CC=gcc-3.4.3 CXX=g++-3.4.3 /opt/quest/source/gcc-4.3.2/configure \
   --with-mpfr="/opt/quest/platform/${SYSID:?}/mpfr-2.3" \
   --with-gnu-ld --with-ld="/opt/quest/platform/${SYSID:?}/binutils-2.19/bin/ld" \
   --with-gnu-as --with-as="/opt/quest/platform/${SYSID:?}/binutils-2.19/bin/as" \
-  
+  --enable-shared \
+  --enable-threads=posix \

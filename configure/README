@@ -1,0 +1,46 @@
+
+Compiling GCC on all platforms:
+
+- Compile texinfo-2.14 if not available. Needed for binutils build.
+
+- Compile binutils-2.19. See NOTE: for the nex item.
+
+- Compile gcc-3.4.6 with whatever compiler available. 
+  NOTE: May be challenging with some native compilers. At the time of this 
+        writing, gcc-3.4.3 was available for all platforms in use. It was 
+        located in here (may still be in archives):
+        ~gbystrit/local/<platform-id>/gcc-3.4.3
+
+- Make corresponding links in platorm's bin folder for gcc-3.4 and g++-3.4
+
+- Compile gmp-4.2.4 and mfpr-2.3.2
+
+- Compile gcc-4.3.2 with gcc-3.4.
+  
+Encountered issues:
+
+Sometimes configure for a facility started complaining about autoconf not
+being available. The letter is not required for distribution archive,
+apparenlty some file/folder timestamp mess-up causes its use. To resolve, 
+simply delete the facility folder and do "svn update".
+
+sun-9-sparc
+===========
+
+Compiling texinfo-2.14 had an issue with unavailable help2man. Trying to
+compile help2man required downloading some perl modules from CPAN. To avoid
+this (it is only for man pages, after all), simply copied /bin/true to
+help2man in a directory on PATH and build succeeded.
+
+sun-8-sparc
+===========
+
+- texinfo-2.14 linked from sun-9-sparc
+- needs bison-2.4 as yacc is broken
+- needs m4-1.4.12 to compile bison
+
+sun-10-sparc
+============
+
+- texinfo-2.14 linked from sun-9-sparc
+

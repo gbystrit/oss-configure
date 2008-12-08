@@ -1,5 +1,5 @@
 # vim: set tw=0:
-CONFIG_SHELL=ksh CC=gcc-3.4.3 CXX=g++-3.4.3 /opt/quest/source/gcc-4.3.2/configure \
+CONFIG_SHELL=ksh CC=gcc-3.4 CXX=g++-3.4 /opt/quest/source/gcc-4.3.2/configure \
   --prefix="/opt/quest/platform/${SYSID:?}/gcc-4.3" \
   --enable-languages=c,c++ \
   --with-gmp="/opt/quest/platform/${SYSID:?}/gmp-4.2" \

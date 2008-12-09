@@ -1,7 +1,12 @@
 
 Compiling GCC on all platforms:
 
-- Compile texinfo-2.14 if not available. Needed for binutils build.
+- Compile the following prerequisite packages:
+    texinfo-2.14
+    make-3.81
+    gawk-3.1.6
+    flex-2.5.35
+    bison-2.3
 
 - Compile binutils-2.19. See NOTE: for the nex item.
 
@@ -18,25 +23,40 @@ Compiling GCC on all platforms:
 
 - Compile gcc-4.3.2 with gcc-3.4.
 
+- Make corresponding links in platorm's bin folder for gcc-4.3 and g++-4.3
+
+- Make links for gcc-4.3/lib/*.so.* in platform's lib folder.
+
 General notes:
+==============
 
 All needed packages were taken as of the latest version at the time of this
 writing, with some exceptions where indicated bellow.
+
+For every package there's a backup SVN repository in svn-source-depot to track
+possible local changes to the source to make things compile.
   
 Encountered issues:
+===================
 
 Sometimes configure for a facility started complaining about autoconf not
-being available. The letter is not required for distribution archive,
+being available. The latter is not required for distribution archive,
 apparenlty some file/folder timestamp mess-up causes its use. To resolve, 
 simply delete the facility folder and do "svn update".
 
 Had to setup CONFIG_SHELL to ksh as on some platforms standard sh caused
 configure problems (known issue). This works for almost all packages except
 for bison -- it gives syntax error on Solaris when used with anything other
-than sh (tried ksh, bash).
+than sh (tried ksh, bash). 
+
+UPDATE: In some cases it may hurt builds on some platforms. As an example, see
+notes regarding flex build on sun-10-x86 bellow.
+
+Some builds modify source files or leave some files behind. Those need to be
+cleaned up with "svn revert".
 
 sun-9-sparc
-===========
+-----------
 
 This is a base platform to build all dependency tools. sun-8-sparc and
 sun-10-sparc will link whatever possible from this platform.
@@ -56,7 +76,7 @@ sun-10-sparc will link whatever possible from this platform.
 - GCC 3.4.6 required flex, had to build flex-2.5.35.
 
 sun-8-sparc
-===========
+-----------
 
 This platform presented need for older bison package (2.3 instead of latest
 2.4), as with the latest compiling gcc-3.4.6 produced errors when generating
@@ -68,10 +88,25 @@ c-parse.c.
 - gawk-3.1 linked from sun-9-sparc
 
 sun-10-sparc
-============
+------------
 
 - texinfo-2.14 linked from sun-9-sparc
 - bison-2.3 linked from sun-9-sparc
 - m4-1.4 linked from sun-9-sparc
 - gawk-3.1 linked from sun-9-sparc
+
+sun-10-x86
+----------
+
+- binutils-2.19 (and later gcc-3.4.6 too)
+
+  After building bison-2.4 and flex-2.5.35, had issues with generated code in
+  files binutils/arlex.c and ld/ldlex.c -- not defined identifiers flex_int32_t,
+  flex_int16_t, etc. To resolve, wait till compilation fails and then edit a
+  corresponding file by replacing "flex_int" with just "int" and adding the
+  following line to the beginning of the file:
+  #include <inttypes.h>
+
+  UPDATE: Above is not necessary. The real problem was flex-2.5.35 build --
+  removing CONFIG_SHELL=ksh from configure/flex-2.5.35.sh fixed everything.
 

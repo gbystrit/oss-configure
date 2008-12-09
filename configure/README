@@ -47,7 +47,7 @@ sun-10-sparc will link whatever possible from this platform.
   help2man in a directory on PATH and build succeeded.
 
 - Bison was needed for compiling binutils-2.19. Tried first bison-2.4, then
-  had to switch back to bison-2.1 because of sun-8-sparc issues (see bellow).
+  had to switch back to bison-2.3 because of sun-8-sparc issues (see bellow).
 
 - Bison required GNU m4 package, had to build m4-1.4.12.
 
@@ -58,12 +58,12 @@ sun-10-sparc will link whatever possible from this platform.
 sun-8-sparc
 ===========
 
-This platform presented need for older bison package (2.1 instead of latest
+This platform presented need for older bison package (2.3 instead of latest
 2.4), as with the latest compiling gcc-3.4.6 produced errors when generating
 c-parse.c.
 
 - texinfo-2.14 linked from sun-9-sparc
-- bison-2.1 linked from sun-9-sparc
+- bison-2.3 linked from sun-9-sparc
 - m4-1.4 linked from sun-9-sparc
 - gawk-3.1 linked from sun-9-sparc
 
@@ -71,7 +71,7 @@ sun-10-sparc
 ============
 
 - texinfo-2.14 linked from sun-9-sparc
-- bison-2.1 linked from sun-9-sparc
+- bison-2.3 linked from sun-9-sparc
 - m4-1.4 linked from sun-9-sparc
 - gawk-3.1 linked from sun-9-sparc
 

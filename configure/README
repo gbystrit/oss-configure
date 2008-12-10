@@ -27,6 +27,12 @@ Compiling GCC on all platforms:
 
 - Make links for gcc-4.3/lib/*.so.* in platform's lib folder.
 
+On some platforms 'configure' may need to be run with CONFIG_SHELL=bash. To
+build 'bash', the following packages need to be compiled:
+
+  gettext-0.17
+  bash-3.2
+
 
 General notes:
 ==============
@@ -192,3 +198,21 @@ aix-52-ppc
   Running 'make' right after 'configure' produces error about undefined
   rpl_malloc() and rpl_realloc(). Edit config.h to remove definitions of
   malloc to rpl_malloc and try again.
+
+- Well, even though binutils can be built on this platform, ld is not
+  functional there as link errors produced during final libstdc++ build. I
+  even tried to compile with --disable-shared when building gcc-3.4.6, and 
+  it even succeeded. However first use produced the following link error:
+    "reloc .data:0 not in csect"
+  Will be building with /usr/ccs/bin/ld and /usr/ccs/bin/as.
+
+aix-51-ppc
+----------
+
+- Symbolically linked most compiled tools from aix-52-ppc, however had to
+  custom build some (e.g. texinfo) that could not run utilities.
+
+aix-53-ppc
+----------
+
+- Symbolically linked all compiled tools from aix-52-ppc. 

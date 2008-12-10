@@ -182,3 +182,13 @@ sun-10-x86
   UPDATE: Above is not necessary. The real problem was flex-2.5.35 build --
   removing CONFIG_SHELL=ksh from configure/flex-2.5.35.sh fixed everything.
 
+aix-52-ppc
+----------
+
+- Set CONFIG_SHELL to bash for all invocation scripts, e.g.:
+  $ CONFIG_SHELL=bash sh -x /opt/quest/source/configure/flex-2.5.sh
+
+- flex-2.5
+  Running 'make' right after 'configure' produces error about undefined
+  rpl_malloc() and rpl_realloc(). Edit config.h to remove definitions of
+  malloc to rpl_malloc and try again.

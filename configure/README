@@ -27,6 +27,7 @@ Compiling GCC on all platforms:
 
 - Make links for gcc-4.3/lib/*.so.* in platform's lib folder.
 
+
 General notes:
 ==============
 
@@ -34,7 +35,70 @@ All needed packages were taken as of the latest version at the time of this
 writing, with some exceptions where indicated bellow.
 
 For every package there's a backup SVN repository in svn-source-depot to track
-possible local changes to the source to make things compile.
+possible local changes to the source to make things compile. The top
+repository URL is "file:///opt/quest/svn-source-depot/tools". 
+
+  To establish the initial source tree (if does not yet exist), do the 
+  following:
+    svn co file:///opt/quest/svn-source-depot/tools /opt/quest/source
+
+  Or alternatively (because of /opt/quest/.svnrc exists):
+    svn co %r/tools /opt/quest/source
+
+
+Building a package on a particular platform
+===========================================
+
+Packages need to be built in a folder other than the source. E.g. for
+gcc-3.4.6 build, make and empty folder "gcc-3.4.6" (name does not matter) and
+cd to it. Then issue the following command:
+  sh -x /opt/quest/source/configure/gcc-3.4.6-binutils-2.19.sh
+
+
+Incorporating a new package (say, bash-3.2)
+===========================================
+
+- Download the package
+  $ cd /opt/quest/depot
+  $ ftp ftp.gnu.org
+  Connected to ftp.gnu.org (140.186.70.20).
+  Name (ftp.gnu.org:gbystrit): ftp
+  ftp> cd gnu/bash
+  ftp> bin
+  ftp> get bash-3.2.tar.gz
+  ftp> quit
+
+- Extract the downloaded package
+  $ cd /opt/quest/source
+  $ gunzip -c ../depot/bash-3.2.tar.gz | tar xf -
+
+- Create an SVN repository for the package
+  $ svnadmin create /opt/quest/svn-source-depot/bash-3.2
+
+- Add the extracted files to the repository
+  $ cd bash-3.2
+  $ svn co %r/bash-3.2 .
+  $ svn add . --force -q
+  $ svn commit -q -m "Imported distribution archive"
+
+- Establish external dependency in the top repository.
+  $ cd /opt/quest/source
+  $ svn propedit svn:externals .
+    # It will start vi, add the following line and save.
+    bash-3.2          file:///opt/quest/svn-source-depot/bash-3.2
+
+  $ svn commit -m "Added external dependency for bash-3.2"
+
+Now you can build the package from a particular platform. To make it easy to
+run confiugure, create a configure invocation script for newly added bash-3.2
+  $ cd /opt/quest/source/configure
+  $ echo > bash-3.2.sh
+  CONFIG_SHELL="${CONFIG_SHELL:=ksh}" CC=gcc-3.4.3 CXX=g++-3.4.3 \
+  /opt/quest/source/bash-3.2/configure --prefix=/opt/quest/platform/${SYSID:?}/bash-3.2
+  ^D
+  $ svn add bash-3.2.sh
+  $ svn commit -m "Added configure invocation script for bash-3.2"
+
   
 Encountered issues:
 ===================
@@ -83,17 +147,25 @@ This platform presented need for older bison package (2.3 instead of latest
 c-parse.c.
 
 - texinfo-2.14 linked from sun-9-sparc
-- bison-2.3 linked from sun-9-sparc
+- make-3.81 linked from sun-9-sparc
 - m4-1.4 linked from sun-9-sparc
 - gawk-3.1 linked from sun-9-sparc
+- flex-2.5 linked from sun-9-sparc
+- bison-2.3 linked from sun-9-sparc
+
+- Had to build lzma-4.32.7 specifically for this platform because of library
+  version number mismatch.
 
 sun-10-sparc
 ------------
 
 - texinfo-2.14 linked from sun-9-sparc
-- bison-2.3 linked from sun-9-sparc
+- make-3.81 linked from sun-9-sparc
 - m4-1.4 linked from sun-9-sparc
 - gawk-3.1 linked from sun-9-sparc
+- flex-2.5 linked from sun-9-sparc
+- bison-2.3 linked from sun-9-sparc
+- lzma-4.32 linked from sun-9-sparc
 
 sun-10-x86
 ----------

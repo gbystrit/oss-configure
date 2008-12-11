@@ -227,3 +227,33 @@ aix-53-ppc
 ----------
 
 - Symbolically linked all compiled tools from aix-52-ppc. 
+
+hp11-23-pa
+==========
+
+- m4-1.4.12 built with existing gcc-3.4.3 will report "memory exhausted" when
+  run. Had to rebuild m4 with standad HP-UX compiler by specifying CC=cc when
+  invoking configure script.
+
+- flex-2.5.35 compile failed like on AIX, only with on symbol reported
+  undefined - rpl_realloc(). Had to remove it in config.h and restart make.
+
+- binutils-2.19 will not build 'ld'. We need to build binutils anyways to get
+  GNU as.
+
+- GCC must be built with GNU as and /usr/ccs/bin/ld.
+
+- gmp must be invoked with ABI=2.0n in the environment.
+
+hp11-23-ia64
+============
+
+See notes for hp11-23-pa.
+
+- "make install" for gcc-3.4.6 failed in tar trying to change file ownership.
+  Had to build tar-1.20 to overcome the problem.
+
+- Could not build tar-1.20 with available gcc-3.4.3, switched to native
+  compiler with:
+    CC=cc /opt/quest/source/configure/tar-1.20.sh
+

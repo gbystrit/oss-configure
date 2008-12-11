@@ -206,6 +206,17 @@ aix-52-ppc
     "reloc .data:0 not in csect"
   Will be building with /usr/ccs/bin/ld and /usr/ccs/bin/as.
 
+- According to gcc platform notes for AIX, it is still recommended to use
+  standard as and ld on this platform. So we are on the right track.
+
+- gcc-4.3.2 build used to fail on this platform with "out of memory" error for
+  some generators. It turned out that "ulimit" settings were to blame --
+  memory and data limits must be set to unlimited, e.g.:
+    $ ulimit -m unlimited
+    $ ulimit -d unlimited
+  I also modified /etc/security/limits following recomendation on the web, not
+  sure if it were a factor or just ulimit helped.
+
 aix-51-ppc
 ----------
 

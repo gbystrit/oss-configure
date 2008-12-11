@@ -7,8 +7,8 @@ CXX=g++-${GCC_VERSION:=3.4} \
   --enable-languages=c,c++ \
   --with-gmp="/opt/quest/platform/${SYSID:?}/gmp-4.2" \
   --with-mpfr="/opt/quest/platform/${SYSID:?}/mpfr-2.3" \
-  --with-gnu-ld --with-ld="/opt/quest/platform/${SYSID:?}/binutils-2.19/bin/ld" \
-  --with-gnu-as --with-as="/opt/quest/platform/${SYSID:?}/binutils-2.19/bin/as" \
+  --without-gnu-ld --with-ld="/usr/ccs/bin/ld" \
+  --without-gnu-as --with-as="/usr/ccs/bin/as" \
   --enable-shared \
   --enable-threads=posix \
 

@@ -25,7 +25,11 @@ Compiling GCC on all platforms:
 
 - Make corresponding links in platorm's bin folder for gcc-4.3 and g++-4.3
 
-- Make links for gcc-4.3/lib/*.so.* in platform's lib folder.
+- Make links for gcc-4.3/lib/*.so.* in platform's lib folder. Also do lib64
+  where available (e.g. on rh-40-amd64).
+
+- As a final step compile lzma-4.32.7 to verify that gcc-4.3 works. And to
+  have a nice compressor on all platforms, of course.
 
 On some platforms 'configure' may need to be run with CONFIG_SHELL=bash. To
 build 'bash', the following packages need to be compiled:
@@ -223,6 +227,15 @@ aix-51-ppc
 - Symbolically linked most compiled tools from aix-52-ppc, however had to
   custom build some (e.g. texinfo) that could not run utilities.
 
+- Problem because of unsufficient ulimits also experienced here, see
+  aix-52-ppc for details.
+
+- Final build of gcc-4.3.2 kept hanging in some internal "configure" when
+  checking for thread local storage. Simply had to kill ./conftest process
+  several times during build.
+  UPDATE: still could not build gcc-4.3.2 because of more configuration
+  problems. Switched to another 5.1 host to see how it goes there.
+
 aix-53-ppc
 ----------
 
@@ -257,3 +270,16 @@ See notes for hp11-23-pa.
   compiler with:
     CC=cc /opt/quest/source/configure/tar-1.20.sh
 
+rh-40-ia64
+==========
+
+- Compiling gcc-4.3.2 with our default settings for SHELL (ksh) produced
+  errors in gcc-4.3.2/ia64-unknown-linux-gnu/libstdc++-v3/include/Makefile
+  when performing target "stamp-host". Manually tweaked Makefile to use bash
+  instead locally in the rule. Recommend to run configure invocation with
+  SHELL=bash.
+
+- No 32 bit gcc libraries.
+
+osf-40-alpha
+============

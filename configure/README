@@ -281,3 +281,9 @@ rh-40-ia64
 
 - No 32 bit gcc libraries.
 
+osf-51-alpha
+============
+
+- Some tools required native compiler to be built properly.
+
+- gmp-4.2.4 just be built with ABI=standard

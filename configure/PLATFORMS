@@ -13,11 +13,9 @@
 +   hp11-11-pa
 +   hp11-23-pa
 +   hp11-23-ia64
-    hp11-31-ia64
 
-    aix-51-ppc
+-   aix-51-ppc
 +   aix-52-ppc
 +   aix-53-ppc
 
-?   osf-51-alpha
-?   osf-40-alpha
+-   osf-51-alpha

@@ -235,6 +235,8 @@ aix-51-ppc
   several times during build.
   UPDATE: still could not build gcc-4.3.2 because of more configuration
   problems. Switched to another 5.1 host to see how it goes there.
+  UPDATE: The problem with conftest hanging was because of bad host
+  (irvspxu12). On irvqasu20 everything got built just fine.
 
 aix-53-ppc
 ----------
@@ -287,3 +289,27 @@ osf-51-alpha
 - Some tools required native compiler to be built properly.
 
 - gmp-4.2.4 just be built with ABI=standard
+
+osf-40-alpha
+============
+
+A lot of problems encountered. First of all, NFS3 filesystem with sources
+caused issues of this OS version (extremely slow 'configure'). Had to copy
+every package locally. 
+
+- Unavailable snprintf. Had to build trio-1.13 and compile affected packages
+  (texinfo, flex, etc.) with CPPFLAGS=-Dsnprintf=trio_snprintf and
+  LD_FLAGS='-L<trio libdir> -ltrio'
+
+- Compiling GAWK produced linking problems with undefined _Econnect, _Ebind and
+  _Esetsockopt. Turned out _XOPEN_SOURCE_EXTENDED_ set in awk.h caused this.
+  Had to manually remove the line.
+
+- At some point got "virtual memory exhausted" error. Had to compile as root
+  after increasing corresponding ulimit settings (did not allow to do it as
+  user).
+
+- Tons of other problems, though solvable. Eventually got gcc-3.4.6 compiled
+  and installed.
+
+

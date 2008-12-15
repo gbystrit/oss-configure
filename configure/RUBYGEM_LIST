@@ -1,0 +1,9 @@
+rails 1.2.6
+mocha 0.5.6
+rspec
+mime-types
+highline
+termios
+mongrel
+rake
+xml-simple

@@ -1,5 +1,5 @@
 
-feature="trio-1.13"
+feature="jam-2.5"
 
 pwd=`pwd`
 location=`basename "${pwd}"`
@@ -13,8 +13,5 @@ location=`basename "${pwd}"`
   "
   exit 2
 }
-
-CONFIG_SHELL="${CONFIG_SHELL:=ksh}" \
-CC="${CC:=gcc-3.4.3}" \
-CXX="${CXX:=g++-3.4.3}" \
-./configure --prefix=/opt/quest/platform/${SYSID:?}/trio-1.13
+DESTDIR="/opt/quest/platform/${SYSID:?}/bin"
+make CC=gcc-3.4 && ./jam0 -sBINDIR="${DESTDIR}" install

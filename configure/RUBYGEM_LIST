@@ -1,14 +1,25 @@
-cd /opt/quest/depot/ruby/gems
-gem install -l --no-rdoc --no-ri gemname
+cd /opt/quest/source/rubygems-1.3.1
+ruby setup.rb
 
-sys-uname
-mime-types
-highline
-termios
-rake
-mocha
-rspec
-mongrel
-rails
-xml-simple
-net-ssh
+cd /opt/quest/platform/$SYSID/bin
+ln -s ../ruby-1.8/bin/* .
+
+cd /opt/quest/depot/ruby/gems
+
+PATH=/opt/quest/platform/$SYSID/bin:$PATH gem install -l --no-rdoc --no-ri sys-uname
+
+gem install -l --no-rdoc --no-ri \
+  mime-types \
+  highline \
+  termios \
+  rake \
+  mocha \
+  rspec \
+  mongrel \
+  rails \
+  xml-simple \
+  net-ssh \
+
+cd /opt/quest/platform/$SYSID/bin
+ln -s ../ruby-1.8/bin/* .
+

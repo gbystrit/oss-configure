@@ -1,9 +1,14 @@
-rails 1.2.6
-mocha 0.5.6
-rspec
+cd /opt/quest/depot/ruby/gems
+gem install -l --no-rdoc --no-ri gemname
+
+sys-uname
 mime-types
 highline
 termios
-mongrel
 rake
+mocha
+rspec
+mongrel
+rails
 xml-simple
+net-ssh

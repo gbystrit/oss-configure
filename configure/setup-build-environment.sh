@@ -29,3 +29,14 @@ setup_dependencies()
 
   export CPPFLAGS LDFLAGS
 }
+
+trace_and_run()
+{
+  echo "=> ${@}" 1>&2
+  "${@}"
+
+  [ "${?}" -ne 0 ] && {
+    echo "... command failed with code ${?}"
+    exit "${?}"
+  }
+}

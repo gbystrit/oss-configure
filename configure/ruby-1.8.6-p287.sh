@@ -5,5 +5,5 @@
 setup_dependencies \
   zlib-1.2.3 \
 
-${SOURCE}/ruby-1.8.6-p287/configure --prefix="${ROOT}/ruby-1.8" \
+trace_and_run ${SOURCE}/ruby-1.8.6-p287/configure --prefix="${ROOT}/ruby-1.8" \
 

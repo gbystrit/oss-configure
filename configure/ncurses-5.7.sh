@@ -2,7 +2,7 @@
 
 . /opt/quest/source/configure/setup-build-environment.sh
 
-${SOURCE}/ncurses-5.7/configure --prefix=${ROOT}/ncurses-5.7 \
+trace_and_run ${SOURCE}/ncurses-5.7/configure --prefix=${ROOT}/ncurses-5.7 \
   --without-cxx \
   --without-cxx-binding \
 

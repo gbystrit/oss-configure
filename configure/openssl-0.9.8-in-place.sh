@@ -9,7 +9,9 @@ setup_dependencies \
 
 setup_feature openssl-0.9.8i
 
-trace_and_run ./config no-shared zlib --prefix=${ROOT}/openssl-0.9 
+trace_and_run ./config no-shared zlib --prefix=${ROOT}/openssl-0.9 \
+  ${CPPFLAGS} ${LDFLAGS} "${@}"
+
 echo "Will start in 5 sec: make CC=${CC} MAKEDEPPROG=${CC}"
 sleep 5
 trace_and_run make

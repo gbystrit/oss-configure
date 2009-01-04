@@ -1,2 +1,8 @@
-CONFIG_SHELL="${CONFIG_SHELL:=ksh}" CC=gcc-3.4.3 CXX=g++-3.4.3 \
-/opt/quest/source/libiconv-1.12/configure --prefix=/opt/quest/platform/${SYSID:?}/libiconv-1.12 --disable-shared
+# vim: set sw=2 tw=0:
+
+. /opt/quest/source/configure/setup-build-environment.sh
+
+trace_and_run ${SOURCE}/libiconv-1.12/configure --prefix=${ROOT}/libiconv-1.12 \
+  --disable-shared \
+  --with-pic \
+  "${@}"

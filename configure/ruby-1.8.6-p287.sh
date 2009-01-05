@@ -9,6 +9,14 @@ setup_dependencies \
   readline-5.2 \
   libiconv-1.12 \
 
+# On HP-UX IA64, had to compile with the following settings:
+#   GCC_VERSION=4.3 CFLAGS=-mlp64 CXXFLAGS=-mlp64 LDFLAGS=-L/opt/quest/platform/hp11-23-ia64/lib64
+#
+# For that to work, all dependent libraries had to be built with -mlp64 flag.
+
+
 # --disable-ipv6 is needed for OSF/1 4.0 build.
-trace_and_run ${SOURCE}/ruby-1.8.6-p287/configure --disable-ipv6 --prefix="${ROOT}/ruby-1.8" \
+trace_and_run ${SOURCE}/ruby-1.8.6-p287/configure --prefix="${ROOT}/ruby-1.8" \
+  --disable-ipv6 \
+  --disable-rpath \
   "${@}"

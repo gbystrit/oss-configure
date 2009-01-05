@@ -9,6 +9,7 @@ setup_feature openssl-0.9.8i
 # To build on Solaris, change ./config to ./Configure and add one of the 
 # following options depending on the OS version and platfom:
 #   sun-10-x86          solaris-x86-gcc
+#   sun-8-sparc         solaris-sparcv9-gcc
 #   sun-9-sparc         solaris-sparcv9-gcc
 #   sun-10-sparc        solaris-sparcv9-gcc
 #   hp11-23-ia64        hpux64-ia64-gcc

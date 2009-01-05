@@ -1,7 +1,8 @@
 # vim: set sw=2 tw=0:
 
-SOURCE="/opt/quest/source"
-ROOT="/opt/quest/platform/${SYSID:?}"
+TOP="/opt/quest"
+SOURCE="${TOP}/source"
+ROOT="${TOP}/platform/${SYSID:?}"
 
 : ${GCC_VERSION:=3.4}
 : ${CONFIG_SHELL:=ksh}

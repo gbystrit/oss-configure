@@ -1,17 +1,8 @@
+# vim: set sw=2:
 
-feature="jam-2.5"
+. /opt/quest/source/configure/setup-in-place.sh
 
-pwd=`pwd`
-location=`basename "${pwd}"`
+setup_feature jam-2.5
 
-[ "${location}" != "${feature}" ] && {
-  echo "
-  ${feature} needs to be built in-place. Make sure you do 
-  the following before launching this script again:
-    cp -r '/opt/quest/source/${feautre}' .
-    cd '${feature}'
-  "
-  exit 2
-}
-DESTDIR="/opt/quest/platform/${SYSID:?}/bin"
-make CC=gcc-3.4 && ./jam0 -sBINDIR="${DESTDIR}" install
+trace_and_run make CC="${CC}"
+trace_and_run ./jam0 -sBINDIR="${ROOT}/bin" install

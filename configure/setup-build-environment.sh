@@ -40,4 +40,5 @@ trace_and_run()
     echo "... command failed with code ${?}"
     exit "${?}"
   }
+  true
 }

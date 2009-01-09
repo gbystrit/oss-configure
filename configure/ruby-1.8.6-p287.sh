@@ -14,7 +14,7 @@ setup_dependencies \
 #
 # For that to work, all dependent libraries had to be built with -mlp64 flag.
 
-
+LDFLAGS="${LDFLAGS} -static-libgcc" export LDFLAGS
 # --disable-ipv6 is needed for OSF/1 4.0 build.
 trace_and_run ${SOURCE}/ruby-1.8.6-p287/configure --prefix="${ROOT}/ruby-1.8" \
   --disable-ipv6 \

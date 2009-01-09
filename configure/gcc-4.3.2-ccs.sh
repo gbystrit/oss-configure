@@ -1,14 +1,18 @@
 # vim: set tw=0:
-CONFIG_SHELL="${CONFIG_SHELL:=ksh}" \
-CC=gcc-${GCC_VERSION:=3.4} \
-CXX=g++-${GCC_VERSION:=3.4} \
-/opt/quest/source/gcc-4.3.2/configure \
-  --prefix="/opt/quest/platform/${SYSID:?}/gcc-4.3" \
+
+. /opt/quest/source/configure/setup-build-environment.sh
+
+setup_dependencies \
+  libiconv-1.12 \
+  gmp-4.2 \
+  mpfr-2.3 \
+
+trace_and_run ${SOURCE}/gcc-4.3.2/configure --prefix=${ROOT}/gcc-4.3 \
   --enable-languages=c,c++ \
-  --with-gmp="/opt/quest/platform/${SYSID:?}/gmp-4.2" \
-  --with-mpfr="/opt/quest/platform/${SYSID:?}/mpfr-2.3" \
+  --with-gmp="${ROOT}/gmp-4.2" \
+  --with-mpfr="${ROOT}/mpfr-2.3" \
   --without-gnu-ld --with-ld="/usr/ccs/bin/ld" \
   --without-gnu-as --with-as="/usr/ccs/bin/as" \
   --enable-shared \
   --enable-threads=posix \
-
+  "${@}"

@@ -8,8 +8,9 @@ ROOT="${TOP}/platform/${SYSID:?}"
 : ${CONFIG_SHELL:=ksh}
 : ${CC:=gcc-${GCC_VERSION}}
 : ${CXX:=g++-${GCC_VERSION}}
+: ${CPP:=${CC} -E}
 
-export GCC_VERSION CONFIG_SHELL CC CXX
+export GCC_VERSION CONFIG_SHELL CC CXX CPP
 
 setup_dependencies() 
 {

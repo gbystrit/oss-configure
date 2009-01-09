@@ -1,1 +1,9 @@
-CC=gcc-3.4.3 CXX=g++-3.4.3 /opt/quest/source/flex-2.5.35/configure --prefix=/opt/quest/platform/${SYSID:?}/flex-2.5
+# vim: set sw=2 tw=0:
+
+. /opt/quest/source/configure/setup-build-environment.sh
+
+setup_dependencies \
+  libiconv-1.12
+
+trace_and_run ${SOURCE}/flex-2.5.35/configure --prefix=${ROOT}/flex-2.5 \
+  "${@}"

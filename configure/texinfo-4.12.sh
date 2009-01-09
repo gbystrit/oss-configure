@@ -1,2 +1,9 @@
-CONFIG_SHELL="${CONFIG_SHELL:=ksh}" CC=gcc-3.4.3 CXX=g++-3.4.3 \
-/opt/quest/source/texinfo-4.12/configure --prefix=/opt/quest/platform/${SYSID:?}/texinfo-4.12
+# vim: set sw=2 tw=0:
+
+. /opt/quest/source/configure/setup-build-environment.sh
+
+setup_dependencies \
+  libiconv-1.12
+
+trace_and_run ${SOURCE}/texinfo-4.12/configure --prefix=${ROOT}/texinfo-4.12 \
+  "${@}"

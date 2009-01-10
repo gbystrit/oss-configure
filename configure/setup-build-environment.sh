@@ -4,11 +4,46 @@ TOP="/opt/quest"
 SOURCE="${TOP}/source"
 ROOT="${TOP}/platform/${SYSID:?}"
 
+trace_and_run()
+{
+  echo "=> ${@}" 1>&2
+  eval "${@}"
+
+  [ "${?}" -ne 0 ] && {
+    echo "... command failed with code ${?}"
+    exit "${?}"
+  }
+  true
+}
+
+figure_config_shell()
+{
+  for s in ${CONFIG_SHELL} bash ksh sh; do
+    set entry `type ${s} 2>&1`
+    [ "${?}" -eq 0 ] && {
+      shift
+      while [ "${#}" -gt 1 ]; do
+        shift
+      done
+      [ -x "${1}" ] && {
+        echo "${1}"
+        return 0
+      }
+    }
+  done
+  return 1
+}
+
+trace_and_run CONFIG_SHELL=`figure_config_shell`
+[ "${CONFIG_SHELL:+set}" != set ] && {
+  echo "Cannot figure CONFIG_SHELL" 1>&2
+  exit 5
+}
+
 : ${GCC_VERSION:=3.4}
-: ${CONFIG_SHELL:=ksh}
 : ${CC:=gcc-${GCC_VERSION}}
 : ${CXX:=g++-${GCC_VERSION}}
-: ${CPP:=${CC} -E}
+: ${CPP:="${CC} -E"}
 
 export GCC_VERSION CONFIG_SHELL CC CXX CPP
 
@@ -30,16 +65,4 @@ setup_dependencies()
   done
 
   export CPPFLAGS LDFLAGS
-}
-
-trace_and_run()
-{
-  echo "=> ${@}" 1>&2
-  "${@}"
-
-  [ "${?}" -ne 0 ] && {
-    echo "... command failed with code ${?}"
-    exit "${?}"
-  }
-  true
 }

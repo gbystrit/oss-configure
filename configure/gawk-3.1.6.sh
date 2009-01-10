@@ -1,4 +1,11 @@
-CONFIG_SHELL="${CONFIG_SHELL:=ksh}" \
-CC="${CC:=gcc-3.4.3}" \
-CXX="${CXX:=g++-3.4.3}" \
-/opt/quest/source/gawk-3.1.6/configure --prefix=/opt/quest/platform/${SYSID:?}/gawk-3.1
+# vim: set sw=2 tw=0:
+
+. /opt/quest/source/configure/setup-build-environment.sh
+
+setup_dependencies \
+  libiconv-1.12 \
+  zlib-1.2.3    \
+
+trace_and_run ${SOURCE}/gawk-3.1.6/configure --prefix=${ROOT}/gawk-3.1 \
+  "${@}"
+

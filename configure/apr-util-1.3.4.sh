@@ -7,6 +7,7 @@ setup_dependencies \
   libiconv-1.12 \
   expat-2.0 \
   zlib-1.2.3 \
+  openssl-0.9 \
 
 trace_and_run ${SOURCE}/apr-util-1.3.4/configure --prefix=${ROOT}/apr-util-1.3 \
   --enable-shared                              \

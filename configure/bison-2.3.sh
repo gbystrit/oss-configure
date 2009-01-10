@@ -1,1 +1,9 @@
-CC=gcc-3.4.3 CXX=g++-3.4.3 /opt/quest/source/bison-2.3/configure --prefix=/opt/quest/platform/${SYSID:?}/bison-2.3 
+# vim: set sw=2 tw=0:
+
+. /opt/quest/source/configure/setup-build-environment.sh
+
+setup_dependencies \
+  libiconv-1.12
+
+trace_and_run ${SOURCE}/bison-2.3/configure --prefix=${ROOT}/bison-2.3 \
+  "${@}"

@@ -4,19 +4,24 @@
 +   rh-40-amd64
 +   rh-40-ia64
 
++   sun-6-sparc  (No httpd because of unavailable apr_generate_random_bytes)
++   sun-7-sparc  (Linked from sun-6-sparc)
 +   sun-8-sparc
 +   sun-9-sparc
 +   sun-10-sparc
 +   sun-10-x86
 
-+   hp11-00-pa
-+   hp11-11-pa
++   hp11-00-pa   (No httpd because of unavailable apr_generate_random_bytes)
++   hp11-11-pa   (No httpd because of unavailable apr_generate_random_byte)
 +   hp11-23-pa
-+   hp11-23-ia64
++   hp11-23-ia64 Set "export CFLAGS=-mlp64 CPPFLAGS=-mlp64" before the build.
 
-+   aix-51-ppc
+    All hpux platforms need "/opt/imake/bin/install" be updated with
+    "HP-UX/opt-imake-bin-install" found in this folder.
+
++   aix-51-ppc  (No httpd because of unavailable apr_generate_random_byte)
 +   aix-52-ppc
 +   aix-53-ppc
 
 +   osf-51-alpha
--   osf-40-alpha (upto gcc 3.4.6)
++   osf-40-alpha (upto gcc 3.4.6)

@@ -1,7 +1,6 @@
 # vim: set sw=2 tw=0:
 
-TOP="/opt/quest"
-SOURCE="${TOP}/source"
+. `dirname "${0}"`/setup/top.sh
 ROOT="${TOP}/platform/${SYSID:?}"
 
 trace_and_run()
@@ -51,7 +50,7 @@ setup_dependencies()
 {
   for feature in "${@}"; do
     incdir="${ROOT}/${feature}/include"
-    libdir="${ROOT}/${feature}/lib"
+    libdir="${ROOT}/${feature}/${BUILD_ABILIB:-'lib'}"
 
     for d in ${incdir} ${libdir}; do
       [ -d "${d}" ] || {
@@ -65,4 +64,14 @@ setup_dependencies()
   done
 
   export CPPFLAGS LDFLAGS
+}
+
+root_prefixes()
+{
+  echo --prefix=${ROOT}/${1}
+}
+
+root_lib_prefixes()
+{
+  echo `root_prefixes "${@}"` --libdir=`root_prefixes "${@}"`/${BUILD_ABIDIR:-'lib'}
 }

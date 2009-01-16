@@ -1,7 +1,9 @@
 # vim: set sw=2:
 
 . `dirname "${0}"`/setup/in-place.sh
-PATH=${ROOT}/gcc-${GCC_VERSION}/bin:${PATH} export PATH
+. `dirname "${0}"`/setup/gcc-build-environment.sh
+
+PATH=${GCC_ROOT}/bin:${PATH} export PATH
 gcc -v
 
 setup_feature openssl-0.9.8i
@@ -14,7 +16,7 @@ setup_feature openssl-0.9.8i
 #   sun-10-sparc        solaris-sparcv9-gcc
 #   hp11-23-ia64        hpux64-ia64-gcc
 
-trace_and_run ./config no-shared no-zlib --prefix=${ROOT}/openssl-0.9 \
+trace_and_run ./config no-shared no-zlib `root_prefixes "openssl-0.9" \
   ${CPPFLAGS} ${LDFLAGS} "${@}"
 
 echo "Will start in 5 sec: make CC=${CC} MAKEDEPPROG=${CC}"

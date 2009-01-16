@@ -3,8 +3,8 @@
 unset CC CXX
 export CFLAGS CXXFLAGS
 
-. `dirname "${0}"`/top.sh
-. ${SETUP}/platform-environment.sh
+. `dirname "${0}"`/setup/top.sh
+. ${SETUP}/build-platform.sh
 . ${SETUP}/build-environment.sh
 
 GCC_ROOT=${ROOT}/gcc-${GCC_VERSION}

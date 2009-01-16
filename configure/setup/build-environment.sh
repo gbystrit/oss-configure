@@ -1,6 +1,7 @@
 # vim: set sw=2 tw=0:
 
 . `dirname "${0}"`/setup/top.sh
+
 ROOT="${TOP}/platform/${SYSID:?}"
 
 trace_and_run()

@@ -1,6 +1,6 @@
 # vim: set sw=2 tw=0:
 
-. `dirname "${0}"`/setup/build-environment.sh
+. `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_dependencies \
   apr-1.3 \
@@ -9,7 +9,7 @@ setup_dependencies \
   zlib-1.2.3 \
   openssl-0.9 \
 
-trace_and_run ${SOURCE}/apr-util-1.3.4/configure --prefix=${ROOT}/apr-util-1.3 \
+trace_and_run ${SOURCE}/apr-util-1.3.4/configure `root_lib_prefixes "apr-util-1.3"` \
   --enable-shared                              \
   --without-berkeley-db                        \
   --with-apr=${ROOT}/apr-1.3                   \

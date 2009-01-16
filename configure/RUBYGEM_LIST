@@ -8,17 +8,18 @@ cd /opt/quest/depot/ruby/gems
 
 PATH=/opt/quest/platform/$SYSID/bin:$PATH gem install -l --no-rdoc --no-ri sys-uname
 
-gem install -l --no-rdoc --no-ri \
-  mime-types \
-  highline \
-  termios \
-  rake \
-  mocha \
-  rspec \
-  mongrel \
-  rails \
-  xml-simple \
-  net-ssh \
+gem install -l --no-rdoc --no-ri   mime-types       &&
+gem install -l --no-rdoc --no-ri   highline         &&
+gem install -l --no-rdoc --no-ri   termios          &&
+gem install -l --no-rdoc --no-ri   rake             &&
+gem install -l --no-rdoc --no-ri   mocha            &&
+gem install -l --no-rdoc --no-ri   rspec-1.1.1.gem  &&
+gem install -l --no-rdoc --no-ri   rspec-1.1.11.gem &&
+gem install -l --no-rdoc --no-ri   mongrel          &&
+gem install -l --no-rdoc --no-ri   rails            &&
+gem install -l --no-rdoc --no-ri   xml-simple       &&
+gem install -l --no-rdoc --no-ri   net-ssh          &&
+true
 
 cd /opt/quest/platform/$SYSID/bin
 ln -s ../ruby-1.8/bin/* .

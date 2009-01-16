@@ -3,8 +3,9 @@
 unset CC CXX
 export CFLAGS CXXFLAGS
 
-. /opt/quest/source/configure/setup-platform-environment.sh
-. /opt/quest/source/configure/setup-build-environment.sh
+. `dirname "${0}"`/top.sh
+. ${SETUP}/platform-environment.sh
+. ${SETUP}/build-environment.sh
 
 GCC_ROOT=${ROOT}/gcc-${GCC_VERSION}
 GCC_CONTRIB=${GCC_ROOT}/contrib

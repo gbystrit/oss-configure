@@ -1,6 +1,6 @@
 # vim: set sw=2:
 
-. /opt/quest/source/configure/setup-in-place.sh
+. `dirname "${0}"`/setup/in-place.sh
 PATH=${ROOT}/gcc-${GCC_VERSION}/bin:${PATH} export PATH
 gcc -v
 

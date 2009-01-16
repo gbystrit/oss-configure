@@ -1,6 +1,6 @@
 # vim: set sw=2 tw=0:
 
-. /opt/quest/source/configure/setup-build-environment.sh
+. `dirname "${0}"`/setup/build-environment.sh
 
 trace_and_run ${SOURCE}/sudo-1.7.0/configure --prefix=${ROOT}/sudo-1.7 \
   --disable-shared \

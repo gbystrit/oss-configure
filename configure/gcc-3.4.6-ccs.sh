@@ -1,6 +1,6 @@
 # vim: set tw=0:
 
-. /opt/quest/source/configure/setup-build-environment.sh
+. `dirname "${0}"`/setup/build-environment.sh
 
 setup_dependencies \
   libiconv-1.12

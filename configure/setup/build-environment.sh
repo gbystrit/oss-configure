@@ -74,5 +74,5 @@ root_prefixes()
 
 root_lib_prefixes()
 {
-  echo `root_prefixes "${@}"` --libdir=`root_prefixes "${@}"`/${BUILD_ABIDIR:-'lib'}
+  echo `root_prefixes "${@}"` --libdir=${ROOT}/${1}/${BUILD_ABILIB:-'lib'}
 }

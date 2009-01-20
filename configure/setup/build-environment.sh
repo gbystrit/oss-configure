@@ -51,7 +51,7 @@ setup_dependencies()
 {
   for feature in "${@}"; do
     incdir="${ROOT}/${feature}/include"
-    libdir="${ROOT}/${feature}/${BUILD_ABILIB:-'lib'}"
+    libdir="${ROOT}/${feature}/${BUILD_ABILIB:-lib}"
 
     for d in ${incdir} ${libdir}; do
       [ -d "${d}" ] || {
@@ -74,5 +74,5 @@ root_prefixes()
 
 root_lib_prefixes()
 {
-  echo `root_prefixes "${@}"` --libdir=${ROOT}/${1}/${BUILD_ABILIB:-'lib'}
+  echo `root_prefixes "${@}"` --libdir=${ROOT}/${1}/${BUILD_ABILIB:-lib}
 }

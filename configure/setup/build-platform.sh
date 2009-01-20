@@ -3,7 +3,7 @@
 . `dirname "${0}"`/setup/top.sh
 
 : ${BUILD_PLATFORM="`tsc-platform`"}
-: ${BUILD_ABILIB="lib"}
+: ${BUILD_ABILIB=lib}
 
 case ${BUILD_PLATFORM} in
   rh-40-amd64)

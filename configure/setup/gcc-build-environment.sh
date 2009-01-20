@@ -12,5 +12,5 @@ GCC_CONTRIB=${GCC_ROOT}/contrib
 
 gcc_contrib_lib_prefixes()
 {
-  echo --prefix=${GCC_CONTRIB}/${1} --libdir=${GCC_CONTRIB}/${1}/${BUILD_ABILIB:-'lib'}
+  echo --prefix=${GCC_CONTRIB}/${1} --libdir=${GCC_CONTRIB}/${1}/${BUILD_ABILIB:-lib}
 }

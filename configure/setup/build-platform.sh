@@ -2,7 +2,7 @@
 
 . `dirname "${0}"`/setup/top.sh
 
-: ${BUILD_PLATFORM="`tsc-platform`"}
+: ${BUILD_PLATFORM=${SYSID:-"`tsc-platform`"}}
 : ${BUILD_ABILIB=lib}
 
 case ${BUILD_PLATFORM} in
@@ -27,10 +27,10 @@ case ${BUILD_PLATFORM} in
       ;;
     esac
   ;;
-  rh-*-x86)
+  rh-*-x86 | mac-*-*)
   ;;
   *)
-    echo 'Platform "'"${BUILD_PLATFORM}"'" not configured in "'"${SETUP}"/platform.sh'"' 1>&2
+    echo 'Platform "'"${BUILD_PLATFORM}"'" not configured in "'"${SETUP}"/build-platform.sh'"' 1>&2
     exit 3
   ;;
 esac

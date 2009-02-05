@@ -27,7 +27,7 @@ case ${BUILD_PLATFORM} in
       ;;
     esac
   ;;
-  rh-*-x86 | mac-*-*)
+  rh-*-x86 | sun-*-sparc | sun-*-x86 | mac-*-*)
   ;;
   *)
     echo 'Platform "'"${BUILD_PLATFORM}"'" not configured in "'"${SETUP}"/build-platform.sh'"' 1>&2

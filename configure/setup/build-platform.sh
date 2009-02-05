@@ -27,6 +27,26 @@ case ${BUILD_PLATFORM} in
       ;;
     esac
   ;;
+
+  hp11-23-ia64)
+    case "${BUILD_ABI}" in
+      32)
+      ;;
+      64)
+        CFLAGS=-mlp64
+        CXXFLAGS=-mlp64
+        BUILD_ABILIB="lib"
+      ;;
+      "")
+        echo 'Specify BUILD_ABI as "'"32"'" or "'"64"'"' 1>&2
+        exit 2
+      ;;
+      *)
+        echo 'Unknown BUILD_ABI "'"${BUILD_ABI}"'"' 1>&2
+        exit 3
+      ;;
+    esac
+  ;;
   rh-*-x86 | sun-*-sparc | sun-*-x86 | mac-*-*)
   ;;
   *)

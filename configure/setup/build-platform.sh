@@ -35,7 +35,7 @@ case ${BUILD_PLATFORM} in
       64)
         CFLAGS=-mlp64
         CXXFLAGS=-mlp64
-        BUILD_ABILIB="lib"
+        BUILD_ABILIB="lib64"
       ;;
       "")
         echo 'Specify BUILD_ABI as "'"32"'" or "'"64"'"' 1>&2
@@ -51,7 +51,10 @@ case ${BUILD_PLATFORM} in
   ;;
   *)
     echo 'Platform "'"${BUILD_PLATFORM}"'" not configured in "'"${SETUP}"/build-platform.sh'"' 1>&2
-    exit 3
+    [ "${FORCE_PLATFORM}" != "true" ] && {
+      echo 'TIP: Set FORCE_PLATFORM to "true" to proceed anyway.'
+      exit 3
+    }
   ;;
 esac
 

@@ -1,0 +1,11 @@
+cd /opt/quest/depot/ruby/gems/compat
+
+gem install -l --no-rdoc --no-ri   sources-0.0.1.gem &&
+gem install -l --no-rdoc --no-ri   mongrel-1.1.2.gem &&
+gem install -l --no-rdoc --no-ri   daemons-1.0.9.gem &&
+gem install -l --no-rdoc --no-ri   scheduler-0.3.gem &&
+true
+
+cd /opt/quest/platform/$SYSID/bin
+ln -s ../ruby-1.8/bin/* .
+

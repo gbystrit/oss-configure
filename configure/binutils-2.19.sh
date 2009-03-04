@@ -1,10 +1,10 @@
 # vim: set tw=0:
 
-. `dirname "${0}"`/setup/build-environment.sh
+. `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_dependencies \
   libiconv-1.12 \
   zlib-1.2.3 \
 
-trace_and_run ${SOURCE}/binutils-2.19/configure --prefix=${ROOT}/binutils-2.19 \
+trace_and_run ${SOURCE}/binutils-2.19/configure `root_prefixes "binutils${GCC_ABI}-2.19"` \
   "${@}"

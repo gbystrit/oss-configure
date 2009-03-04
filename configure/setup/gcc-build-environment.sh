@@ -7,7 +7,7 @@ export CFLAGS CXXFLAGS
 . ${SETUP}/build-platform.sh
 . ${SETUP}/build-environment.sh
 
-GCC_ROOT=${ROOT}/gcc-${GCC_VERSION}
+GCC_ROOT=${ROOT}/gcc${GCC_ABI}-${GCC_VERSION}
 GCC_CONTRIB=${GCC_ROOT}/contrib
 
 gcc_contrib_lib_prefixes()

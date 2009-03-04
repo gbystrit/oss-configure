@@ -41,8 +41,8 @@ trace_and_run CONFIG_SHELL=`figure_config_shell`
 }
 
 : ${GCC_VERSION:=3.4}
-: ${CC:=gcc-${GCC_VERSION}}
-: ${CXX:=g++-${GCC_VERSION}}
+: ${CC:=gcc${GCC_ABI}-${GCC_VERSION}}
+: ${CXX:=g++${GCC_ABI}-${GCC_VERSION}}
 : ${CPP:="${CC} -E"}
 
 export GCC_VERSION CONFIG_SHELL CC CXX CPP

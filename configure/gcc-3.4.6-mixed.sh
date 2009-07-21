@@ -10,5 +10,6 @@ trace_and_run ${SOURCE}/gcc-3.4.6/configure `root_prefixes "gcc${GCC_ABI}-3.4"` 
   --without-gnu-ld --with-ld="/usr/ccs/bin/ld" \
   --with-gnu-as --with-as="${ROOT}/binutils${GCC_ABI}-2.19/bin/as" \
   --enable-shared \
+  --disable-nls \
   --enable-threads=posix \
   "${@}"

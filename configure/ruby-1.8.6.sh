@@ -16,7 +16,7 @@ setup_dependencies \
 
 LDFLAGS="${LDFLAGS} -static-libgcc" export LDFLAGS
 # --disable-ipv6 is needed for OSF/1 4.0 build.
-trace_and_run ${SOURCE}/ruby-1.8.6-p287/configure --prefix="${ROOT}/ruby-1.8" \
+trace_and_run ${SOURCE}/ruby-1.8.6/configure --prefix="${ROOT}/ruby-1.8" \
   --disable-ipv6 \
   --disable-rpath \
   "${@}"

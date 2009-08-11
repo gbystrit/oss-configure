@@ -1,6 +1,6 @@
 # vim: set sw=2 tw=0:
 
-. `dirname "${0}"`/setup/build-environment.sh
+. `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_dependencies \
   zlib-1.2.3 \
@@ -14,9 +14,10 @@ setup_dependencies \
 #
 # For that to work, all dependent libraries had to be built with -mlp64 flag.
 
-LDFLAGS="${LDFLAGS} -static-libgcc" export LDFLAGS
+XLDFLAGS="${XLDFLAGS} -static-libgcc" export XLDFLAGS
 # --disable-ipv6 is needed for OSF/1 4.0 build.
 trace_and_run ${SOURCE}/ruby-1.8.6/configure --prefix="${ROOT}/ruby-1.8" \
+  --disable-option-checking \
   --disable-ipv6 \
   --disable-rpath \
   "${@}"

@@ -3,6 +3,7 @@
 . `dirname "${0}"`/setup/top.sh
 
 ROOT="${TOP}/platform/${SYSID:?}"
+: ${ROOT_PREFIX:="${ROOT}"}
 
 trace_and_run()
 {
@@ -69,7 +70,7 @@ setup_dependencies()
 
 root_prefixes()
 {
-  echo --prefix=${ROOT}/${1}
+  echo --prefix=${ROOT_PREFIX}/${1}
 }
 
 root_lib_prefixes()

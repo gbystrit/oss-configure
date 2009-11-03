@@ -2,8 +2,14 @@
 
 . `dirname "${0}"`/setup/top.sh
 
-ROOT="${TOP}/platform/${SYSID:?}"
-: ${ROOT_PREFIX:="${ROOT}"}
+[ "${TOOLS_ROOT:+set}" != set ] && echo '${TOOLS_ROOT}: tools location, default '"${TOP}"'/platorm/<platform_id>'
+[ "${SYSID:+set}" != set ] && echo '${SYSID}: platform id, default `tsc-platform`'
+[ "${BUILD_ABI:+set}" != set ] && echo '${BUILD_ABI}: 32 or 64, default 32 on 32-bit platforms (none on 64-bit)'
+
+: ${TOOLS_ROOT:="${TOP}/platform/${SYSID:?}"}
+: ${ROOT_PREFIX:="${TOOLS_ROOT}"}
+
+ROOT=${TOOLS_ROOT}
 
 trace_and_run()
 {
@@ -68,12 +74,32 @@ setup_dependencies()
   export CPPFLAGS LDFLAGS
 }
 
+make_prefix()
+{
+  echo ${ROOT_PREFIX}/${1:-${FEATURE}}
+}
+
+make_abilib_prefix()
+{
+  echo `make_prefix "${@}"`/${BUILD_ABILIB:-lib}
+}
+
 root_prefixes()
 {
-  echo --prefix=${ROOT_PREFIX}/${1}
+  echo --prefix=`make_prefix "${@}"`
 }
 
 root_lib_prefixes()
 {
-  echo `root_prefixes "${@}"` --libdir=${ROOT}/${1}/${BUILD_ABILIB:-lib}
+  echo `root_prefixes "${@}"` --libdir=`make_abilib_prefix "${@}"`
+}
+
+adjust_feature_lib_location()
+{
+  libdir=`make_prefix`/lib
+  abilibdir=`make_abilib_prefix`
+
+  [ "${libdir}" != "${abilibdir}" ] && [ -d "${libdir}" ] && {
+    [ -d "${abilibdir}" ] || mv "${libdir}" "${abilibdir}"
+  }
 }

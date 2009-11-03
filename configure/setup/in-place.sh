@@ -7,6 +7,8 @@ setup_feature()
   feature="${1}"
   source="${SOURCE}/${feature}"
 
+  FEATURE="${2}"
+
   pwd=`pwd`
   location=`basename "${pwd}"`
 

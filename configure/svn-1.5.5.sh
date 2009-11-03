@@ -1,6 +1,6 @@
 # vim: set sw=2 tw=0:
 
-. `dirname "${0}"`/setup/build-environment.sh
+. `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_dependencies \
   libiconv-1.12 \
@@ -17,7 +17,7 @@ else
   HTTPD_OPTIONS="--without-apxs --without-apache"
 fi
 
-trace_and_run ${SOURCE}/svn-1.5.5/configure --prefix=${ROOT}/svn-1.5 \
+trace_and_run ${SOURCE}/svn-1.5.5/configure `root_lib_prefixes "svn-1.5"` \
   --disable-nls                            \
   --with-apr=${ROOT}/apr-1.3               \
   --with-apr-util=${ROOT}/apr-util-1.3     \

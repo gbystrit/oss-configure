@@ -26,7 +26,7 @@ trace_and_run ${SOURCE}/httpd-2.2.11/configure --prefix=${ROOT}/httpd-2.2 \
   --enable-headers                     \
   --enable-usertrack                   \
   --enable-unique-id                   \
-  --disable-setenvif                   \
+  --enable-setenvif                    \
   --enable-proxy                       \
   --enable-proxy-connect               \
   --enable-proxy-ftp                   \

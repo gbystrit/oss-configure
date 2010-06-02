@@ -47,6 +47,7 @@ case ${BUILD_PLATFORM} in
       ;;
     esac
   ;;
+
   hp11-*-pa)
     case "${BUILD_ABI}" in
       32)
@@ -65,8 +66,39 @@ case ${BUILD_PLATFORM} in
       ;;
     esac
   ;;
-  rh-*-x86 | sun-*-sparc | sun-*-x86 | mac-*-* | aix-*-ppc)
+
+  aix-*-ppc)
+    case "${BUILD_ABI}" in
+      32)
+        BUILD_ABILIB="lib"
+      ;;
+      32-pthread)
+        BUILD_ABILIB="lib/pthread"
+        CFLAGS=-pthread
+        CXXFLAGS=-pthread
+      ;;
+      64)
+        BUILD_ABILIB="lib64"
+      ;;
+      64-pthread)
+        BUILD_ABILIB="lib64/pthread"
+        CFLAGS=-pthread
+        CXXFLAGS=-pthread
+      ;;
+      "")
+        echo 'Specify BUILD_ABI as 32, 64, 32-pthread or 64-pthread' 1>&2
+        exit 2
+      ;;
+      *)
+        echo 'Unknown BUILD_ABI "'"${BUILD_ABI}"'"' 1>&2
+        exit 3
+      ;;
+    esac
   ;;
+
+  rh-*-x86 | sun-*-sparc | sun-*-x86 | mac-*-* )
+  ;;
+
   *)
     echo 'Platform "'"${BUILD_PLATFORM}"'" not configured in "'"${SETUP}"/build-platform.sh'"' 1>&2
     [ "${FORCE_PLATFORM}" != "true" ] && {

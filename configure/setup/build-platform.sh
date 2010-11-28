@@ -6,7 +6,7 @@
 : ${BUILD_ABILIB=lib}
 
 case ${BUILD_PLATFORM} in
-  rh-40-amd64)
+  rh-*-amd64 | sun-*-x86)
     case "${BUILD_ABI}" in
       32)
         CFLAGS=-m32
@@ -71,19 +71,27 @@ case ${BUILD_PLATFORM} in
     case "${BUILD_ABI}" in
       32)
         BUILD_ABILIB="lib"
+        CFLAGS="-maix32"
+        CXXFLAGS="-maix32"
+        AR_OBJECT_FLAGS="-X32"
       ;;
       32-pthread)
         BUILD_ABILIB="lib/pthread"
-        CFLAGS=-pthread
-        CXXFLAGS=-pthread
+        CFLAGS="-pthread -maix32"
+        CXXFLAGS="-pthread -maix32"
+        AR_OBJECT_FLAGS="-X32"
       ;;
       64)
         BUILD_ABILIB="lib64"
+        CFLAGS="-maix64"
+        CXXFLAGS="-maix64"
+        AR_OBJECT_FLAGS="-X64"
       ;;
       64-pthread)
         BUILD_ABILIB="lib64/pthread"
-        CFLAGS=-pthread
-        CXXFLAGS=-pthread
+        CFLAGS="-pthread -maix64"
+        CXXFLAGS="-pthread -maix64"
+        AR_OBJECT_FLAGS="-X64"
       ;;
       "")
         echo 'Specify BUILD_ABI as 32, 64, 32-pthread or 64-pthread' 1>&2
@@ -96,7 +104,27 @@ case ${BUILD_PLATFORM} in
     esac
   ;;
 
-  rh-*-x86 | sun-*-sparc | sun-*-x86 | mac-*-* )
+  sun-*-sparc)
+    case "${BUILD_ABI}" in
+      32)
+      ;;
+      64)
+        CFLAGS=-m64
+        CXXFLAGS=-m64
+        BUILD_ABILIB="lib64"
+      ;;
+      "")
+        echo 'Specify BUILD_ABI as "'"32"'" or "'"64"'"' 1>&2
+        exit 2
+      ;;
+      *)
+        echo 'Unknown BUILD_ABI "'"${BUILD_ABI}"'"' 1>&2
+        exit 3
+      ;;
+    esac
+  ;;
+
+  rh-*-x86 | sun-*-sparc | mac-*-* )
   ;;
 
   *)

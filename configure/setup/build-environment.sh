@@ -51,8 +51,10 @@ trace_and_run CONFIG_SHELL=`figure_config_shell`
 : ${CC:=gcc${GCC_ABI}-${GCC_VERSION}}
 : ${CXX:=g++${GCC_ABI}-${GCC_VERSION}}
 : ${CPP:="${CC} -E"}
+: ${AR:=ar${GCC_ABI} ${AR_OBJECT_FLAGS}}
+: ${RANLIB:=ranlib${GCC_ABI} ${AR_OBJECT_FLAGS}}
 
-export GCC_VERSION CONFIG_SHELL CC CXX CPP
+export GCC_VERSION CONFIG_SHELL CC CXX CPP AR RANLIB 
 
 setup_dependencies() 
 {

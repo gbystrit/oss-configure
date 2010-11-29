@@ -112,7 +112,7 @@ adjust_feature_lib_location()
 
 filter_disabled_feature()
 {
-  for item in ${DISABLED_FEATURES}; do
+  for item in ${DISABLE_FEATURE}; do
     [ "${item}" = "${1}" ] && {
       return 0
     }

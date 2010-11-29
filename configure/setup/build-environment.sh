@@ -59,6 +59,10 @@ export GCC_VERSION CONFIG_SHELL CC CXX CPP AR RANLIB
 setup_dependencies() 
 {
   for feature in "${@}"; do
+    feature=`filter_disabled_feature "${feature}"`
+    [ "${feature:+set}" = set ] || {
+      continue
+    }
     incdir="${ROOT}/${feature}/include"
     libdir="${ROOT}/${feature}/${BUILD_ABILIB:-lib}"
 
@@ -104,4 +108,16 @@ adjust_feature_lib_location()
   [ "${libdir}" != "${abilibdir}" ] && [ -d "${libdir}" ] && {
     [ -d "${abilibdir}" ] || mv "${libdir}" "${abilibdir}"
   }
+}
+
+filter_disabled_feature()
+{
+  for item in ${DISABLED_FEATURES}; do
+    [ "${item}" = "${1}" ] && {
+      return 0
+    }
+  done
+
+  echo ${1}
+  return 0
 }

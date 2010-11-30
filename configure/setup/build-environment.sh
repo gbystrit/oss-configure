@@ -5,6 +5,7 @@
 [ "${TOOLS_ROOT:+set}" != set ] && echo '${TOOLS_ROOT}: tools location, default '"${TOP}"'/platorm/<platform_id>'
 [ "${SYSID:+set}" != set ] && echo '${SYSID}: platform id, default `tsc-platform`'
 [ "${BUILD_ABI:+set}" != set ] && echo '${BUILD_ABI}: 32 or 64, default 32 on 32-bit platforms (none on 64-bit)'
+[ "${DISABLE_FEATURE:+set}" != set ] && echo '${DISABLE_FEATURE}: temporarily turn off a required feature'
 
 : ${TOOLS_ROOT:="${TOP}/platform/${SYSID:?}"}
 : ${ROOT_PREFIX:="${TOOLS_ROOT}"}

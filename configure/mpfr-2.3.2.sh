@@ -1,2 +1,10 @@
-CONFIG_SHELL="${CONFIG_SHELL:=ksh}" CC=gcc-3.4 CXX=g++-3.4 \
-/opt/quest/source/mpfr-2.3.2/configure --prefix=/opt/quest/platform/${SYSID:?}/mpfr-2.3 --disable-shared --with-gmp=/opt/quest/platform/${SYSID:?}/gmp-4.2
+# vim: set tw=0:
+
+. `dirname "${0}"`/setup/gcc-build-environment.sh
+
+setup_dependencies \
+
+trace_and_run ${SOURCE}/mpfr-2.3.2/configure `root_prefixes "mpfr${GCC_ABI}-2.3"` \
+  --disable-shared \
+  --with-gmp="${ROOT_PREFIX}/gmp-4.2" \
+  "${@}"

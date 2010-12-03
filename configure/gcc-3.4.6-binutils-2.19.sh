@@ -1,6 +1,6 @@
 # vim: set tw=0:
 
-. `dirname "${0}"`/setup/build-environment.sh
+. `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_dependencies \
   libiconv-1.12

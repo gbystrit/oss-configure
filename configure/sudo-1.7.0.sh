@@ -2,7 +2,7 @@
 
 . `dirname "${0}"`/setup/gcc-build-environment.sh
 
-trace_and_run ${SOURCE}/sudo-1.7.0/configure `root_prefixex "sudo-1.7"` \
+trace_and_run ${SOURCE}/sudo-1.7.0/configure `root_prefixes "sudo-1.7"` \
   --disable-shared \
   --sysconfdir=/etc \
   --enable-static \

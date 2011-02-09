@@ -8,7 +8,6 @@ setup_dependencies \
 
 GDB_VERSION=5.3
 trace_and_run ${SOURCE}/gdb-${GDB_VERSION}/configure `root_prefixes "gdb-${GDB_VERSION}"` \
-  --program-suffix=-${GDB_VERSION} \
   --with-expat=no \
   --without-x \
   --disable-tui \

@@ -1,6 +1,7 @@
 # vim: set sw=2:
 
 . `dirname "${0}"`/setup/in-place.sh
+. `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_feature vim-7.2
 setup_dependencies ncurses-5.7

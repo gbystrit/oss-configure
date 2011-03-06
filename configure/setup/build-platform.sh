@@ -124,7 +124,29 @@ case ${BUILD_PLATFORM} in
     esac
   ;;
 
-  rh-*-x86 | sun-*-sparc | mac-*-* )
+  mac-*-* )
+    case "${BUILD_ABI}" in
+      32)
+        CFLAGS=-m32
+        CXXFLAGS=-m32
+      ;;
+      64)
+        CFLAGS=-m64
+        CXXFLAGS=-m64
+        BUILD_ABILIB="lib64"
+      ;;
+      "")
+        echo 'Specify BUILD_ABI as "'"32"'" or "'"64"'"' 1>&2
+        exit 2
+      ;;
+      *)
+        echo 'Unknown BUILD_ABI "'"${BUILD_ABI}"'"' 1>&2
+        exit 3
+      ;;
+    esac
+  ;;
+
+  rh-*-x86 | mac-*-* )
   ;;
 
   *)

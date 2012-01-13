@@ -10,4 +10,3 @@ setup_dependencies \
 trace_and_run ${SOURCE}/apr-1.3.3/configure `root_lib_prefixes "apr-1.3"` \
   --enable-shared \
   "${@}"
-

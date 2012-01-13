@@ -8,5 +8,5 @@ setup_dependencies \
   readline-5.2 \
   libiconv-1.12 \
 
-trace_and_run ${SOURCE}/sqlite-3.7.3/configure `root_lib_prefixes "sqlite-3.7"` \
+trace_and_run ${SOURCE}/postgresql-9.1.2/configure `root_lib_prefixes "postgresql-9.1"` \
   "${@}"

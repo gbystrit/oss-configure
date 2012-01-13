@@ -7,4 +7,3 @@ setup_dependencies \
 
 trace_and_run ${SOURCE}/readline-5.2/configure `root_lib_prefixes "readline-5.2"` \
   "${@}"
-

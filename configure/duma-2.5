@@ -1,0 +1,6 @@
+# vim: set sw=2 tw=0:
+
+. `dirname "${0}"`/setup/gcc-build-environment.sh
+
+trace_and_run ${SOURCE}/duma-2.5.15/configure `root_lib_prefixes "duma-2.5"` \
+  "${@}"

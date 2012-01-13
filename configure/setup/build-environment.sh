@@ -64,8 +64,8 @@ setup_dependencies()
     [ "${feature:+set}" = set ] || {
       continue
     }
-    incdir="${ROOT}/${feature}/include"
-    libdir="${ROOT}/${feature}/${BUILD_ABILIB:-lib}"
+    incdir=`make_include_dir "${feature}"`
+    libdir=`make_lib_dir "${feature}"`
 
     for d in ${incdir} ${libdir}; do
       [ -d "${d}" ] || {
@@ -81,34 +81,34 @@ setup_dependencies()
   export CPPFLAGS LDFLAGS
 }
 
-make_prefix()
+make_top_dir()
 {
   echo ${ROOT_PREFIX}/${1:-${FEATURE}}
 }
 
-make_abilib_prefix()
+make_api_dir()
 {
-  echo `make_prefix "${@}"`/${BUILD_ABILIB:-lib}
+  echo `make_top_dir ${1}`/${BUILD_ABI:-.}
+}
+
+make_lib_dir()
+{
+  echo `make_top_dir ${1}`/${BUILD_ABI:-.}/lib
+}
+
+make_include_dir()
+{
+  echo `make_top_dir ${1}`/${BUILD_ABI:-.}/include
 }
 
 root_prefixes()
 {
-  echo --prefix=`make_prefix "${@}"`
+  echo --prefix=`make_top_dir "${@}"`
 }
 
 root_lib_prefixes()
 {
-  echo `root_prefixes "${@}"` --libdir=`make_abilib_prefix "${@}"`
-}
-
-adjust_feature_lib_location()
-{
-  libdir=`make_prefix`/lib
-  abilibdir=`make_abilib_prefix`
-
-  [ "${libdir}" != "${abilibdir}" ] && [ -d "${libdir}" ] && {
-    [ -d "${abilibdir}" ] || mv "${libdir}" "${abilibdir}"
-  }
+  echo --prefix=`make_api_dir "${@}"`
 }
 
 filter_disabled_feature()

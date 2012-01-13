@@ -10,6 +10,5 @@ setup_dependencies \
   expat-2.0 \
 
 trace_and_run ./configure `root_lib_prefixes "git-1.7"` \
-  --without-openssl
   "${@}"
 

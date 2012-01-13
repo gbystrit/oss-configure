@@ -6,15 +6,13 @@
 : ${BUILD_ABILIB=lib}
 
 case ${BUILD_PLATFORM} in
-  rh-*-amd64 | sun-*-x86)
+  suse-11-x64 | rh-*-amd64 | sun-*-x86)
     case "${BUILD_ABI}" in
       32)
         CFLAGS=-m32
         CXXFLAGS=-m32
       ;;
       64)
-        CFLAGS=-m64
-        CXXFLAGS=-m64
         BUILD_ABILIB="lib64"
       ;;
       "")
@@ -107,28 +105,6 @@ case ${BUILD_PLATFORM} in
   sun-*-sparc)
     case "${BUILD_ABI}" in
       32)
-      ;;
-      64)
-        CFLAGS=-m64
-        CXXFLAGS=-m64
-        BUILD_ABILIB="lib64"
-      ;;
-      "")
-        echo 'Specify BUILD_ABI as "'"32"'" or "'"64"'"' 1>&2
-        exit 2
-      ;;
-      *)
-        echo 'Unknown BUILD_ABI "'"${BUILD_ABI}"'"' 1>&2
-        exit 3
-      ;;
-    esac
-  ;;
-
-  mac-*-* )
-    case "${BUILD_ABI}" in
-      32)
-        CFLAGS=-m32
-        CXXFLAGS=-m32
       ;;
       64)
         CFLAGS=-m64

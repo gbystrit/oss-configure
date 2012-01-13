@@ -1,21 +1,17 @@
 # vim: set tw=0:
 
-. `dirname "${0}"`/setup/build-environment.sh
+. `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_dependencies \
   libiconv-1.12 \
-  openssl-0.9 \
-  zlib-1.2.3 \
   expat-2.0 \
   apr-1.3 \
   apr-util-1.3 \
 
-trace_and_run ${SOURCE}/httpd-2.2.11/configure --prefix=${ROOT}/httpd-2.2 \
+trace_and_run ${SOURCE}/httpd-2.2.11/configure `root_prefixes "httpd-2.2"` \
   --without-rpath                      \
-  --with-apr=${ROOT}/apr-1.3           \
-  --with-apr-util=${ROOT}/apr-util-1.3 \
-  --with-ssl=${ROOT}/openssl-0.9       \
-  --with-z=${ROOT}/zlib-1.2.3          \
+  --with-apr=`make_api_dir "apr-1.3"` \
+  --with-apr-util=`make_api_dir "apr-util-1.3"` \
   --enable-shared                      \
   --enable-auth-anon                   \
   --enable-include                     \

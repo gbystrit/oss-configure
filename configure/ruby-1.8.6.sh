@@ -4,7 +4,7 @@
 
 setup_dependencies \
   zlib-1.2.3 \
-  openssl-0.9 \
+  openssl-0.9.8i \
   ncurses-5.7 \
   readline-5.2 \
   libiconv-1.12 \

@@ -3,11 +3,11 @@
 . `dirname "${0}"`/setup/gcc-build-environment.sh
 
 setup_dependencies \
-  zlib-1.2.3 \
+  zlib-1.2.5 \
   openssl-0.9 \
   ncurses-5.7 \
   readline-5.2 \
-  libiconv-1.12 \
+  libiconv-1.14 \
 
 # On HP-UX IA64, had to compile with the following settings:
 #   GCC_VERSION=4.3 CFLAGS=-mlp64 CXXFLAGS=-mlp64 LDFLAGS=-L/opt/quest/platform/hp11-23-ia64/lib64
@@ -16,7 +16,7 @@ setup_dependencies \
 
 XLDFLAGS="${XLDFLAGS} -static-libgcc" export XLDFLAGS
 # --disable-ipv6 is needed for OSF/1 4.0 build.
-trace_and_run ${SOURCE}/ruby-1.8.7/configure `root_prefixes "ruby-1.8"` \
+trace_and_run ${SOURCE}/ruby-1.8.7/configure `root_prefixes "ruby-1.8.7"` \
   --disable-option-checking \
   --disable-ipv6 \
   --disable-rpath \

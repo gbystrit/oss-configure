@@ -6,7 +6,7 @@
 PATH=${GCC_ROOT}/bin:${PATH} export PATH
 gcc -v
 
-setup_feature openssl-0.9.8i 
+setup_feature openssl-0.9.8s
 
 # To build on Solaris, change ./config to ./Configure and add one of the 
 # following options depending on the OS version and platfom:
@@ -16,7 +16,7 @@ setup_feature openssl-0.9.8i
 #   sun-10-sparc        solaris-sparcv9-gcc
 #   hp11-23-ia64        hpux64-ia64-gcc
 
-trace_and_run ./config no-shared no-zlib `root_lib_prefixes "openssl-0.9.8i"` \
+trace_and_run ./config shared no-zlib `root_lib_prefixes "openssl-0.9.8s"` \
   ${CPPFLAGS} ${LDFLAGS} "${@}"
 
 echo "Will start in 5 sec: make CC=${CC} MAKEDEPPROG=${CC}"

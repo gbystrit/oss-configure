@@ -6,6 +6,6 @@ setup_dependencies \
   libiconv-1.14 \
   zlib-1.2.5 \
 
-trace_and_run ${SOURCE}/make-3.81/configure --prefix=${ROOT}/make-3.81 \
+trace_and_run ${SOURCE}/global-6.1/configure `root_prefixes "global-6.1"` \
   "${@}"
 

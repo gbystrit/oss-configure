@@ -4,9 +4,8 @@
 
 setup_dependencies \
   zlib-1.2.5 \
-  ncurses-5.7 \
-  readline-5.2 \
   libiconv-1.14 \
 
-trace_and_run ${SOURCE}/postgresql-9.1.2/configure `root_lib_prefixes "postgresql-9.1.2"` \
+trace_and_run ${SOURCE}/cvs-1.12.12/configure `root_prefixes "cvs-1.12.12"` \
+  --with-external-zlib \
   "${@}"

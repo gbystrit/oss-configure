@@ -6,7 +6,7 @@ setup_dependencies \
   libiconv-1.14 \
   zlib-1.2.5 \
 
-trace_and_run ${SOURCE}/gdb-7.2/configure `root_prefixes "gdb-7.2"` \
+trace_and_run ${SOURCE}/gdb-7.3.1/configure `root_prefixes "gdb-7.3.1"` \
   --with-mpfr=no \
   --with-gmp=no \
   --with-expat=no \

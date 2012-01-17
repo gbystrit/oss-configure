@@ -6,7 +6,7 @@
 : ${BUILD_ABILIB=lib}
 
 case ${BUILD_PLATFORM} in
-  suse-11-x64 | rh-*-amd64 | sun-*-x86)
+  suse-11-x64 | rh-*-amd64 | rh-*-x64 | sun-*-x86)
     case "${BUILD_ABI}" in
       32)
         CFLAGS=-m32

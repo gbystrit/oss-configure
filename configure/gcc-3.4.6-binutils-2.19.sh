@@ -7,8 +7,8 @@ setup_dependencies \
 
 trace_and_run ${SOURCE}/gcc-3.4.6/configure `root_prefixes "gcc-3.4.6"` \
   --enable-languages=c,c++ \
-  --with-gnu-ld --with-ld="${ROOT_PREFIX}/binutils-2.19/bin/ld" \
-  --with-gnu-as --with-as="${ROOT_PREFIX}/binutils-2.19/bin/as" \
+  --with-gnu-ld --with-ld=`make_api_dir "binutils-2.19"`/bin/ld \
+  --with-gnu-as --with-as=`make_api_dir "binutils-2.19"`/bin/as \
   --enable-shared \
   --enable-threads=posix \
   "${@}"

@@ -16,7 +16,7 @@ setup_dependencies \
 
 XLDFLAGS="${XLDFLAGS} -static-libgcc" export XLDFLAGS
 # --disable-ipv6 is needed for OSF/1 4.0 build.
-trace_and_run ${SOURCE}/ruby-1.9.1-p243/configure `root_prefixes "ruby-1.9.1-p243"` \
+trace_and_run ${SOURCE}/ruby-1.9.1-p243/configure `root_prefixes "ruby-1.9.1"` \
   --disable-option-checking \
   --enable-ipv6 \
   --disable-rpath \

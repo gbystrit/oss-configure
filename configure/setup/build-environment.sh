@@ -93,12 +93,12 @@ make_api_dir()
 
 make_lib_dir()
 {
-  echo `make_top_dir ${1}`/${BUILD_ABI:-.}/lib
+  echo `make_api_dir ${1}`/lib
 }
 
 make_include_dir()
 {
-  echo `make_top_dir ${1}`/${BUILD_ABI:-.}/include
+  echo `make_api_dir ${1}`/include
 }
 
 root_prefixes()

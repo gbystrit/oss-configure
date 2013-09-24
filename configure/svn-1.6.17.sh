@@ -10,7 +10,7 @@ setup_dependencies \
   neon-0.29 \
   sqlite-3.7 \
 
-HTTPD_APXS=${ROOT}/httpd-2.2/bin/apxs
+HTTPD_APXS=`make_top_dir "httpd-2.2"`/bin/apxs
 if [ -x "${HTTPD_APXS}" ]; then
   HTTPD_OPTIONS="--with-apxs=${HTTPD_APXS}"
 else

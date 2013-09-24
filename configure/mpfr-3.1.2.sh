@@ -4,7 +4,7 @@
 
 setup_dependencies \
 
-trace_and_run ${SOURCE}/mpfr-2.3.2/configure `root_lib_prefixes "mpfr${GCC_ABI}-2.3"` \
+trace_and_run ${SOURCE}/mpfr-3.1.2/configure `root_lib_prefixes "mpfr${GCC_ABI}-3.1"` \
   --disable-shared \
   --with-gmp=`make_api_dir "gmp-4.2"` \
   "${@}"

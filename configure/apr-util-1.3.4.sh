@@ -10,7 +10,7 @@ setup_dependencies \
 
 trace_and_run ${SOURCE}/apr-util-1.3.4/configure `root_lib_prefixes "apr-util-1.3.4"` \
   --enable-shared                              \
- --with-apr=`make_api_dir "apr-1.3"`           \
+ --with-apr=`make_abi_dir "apr-1.3"`           \
   --without-berkeley-db                        \
   --without-pgsql                              \
   --without-mysql                              \

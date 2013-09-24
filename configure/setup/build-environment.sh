@@ -86,19 +86,19 @@ make_top_dir()
   echo ${ROOT_PREFIX}/${1:-${FEATURE}}
 }
 
-make_api_dir()
+make_abi_dir()
 {
   echo `make_top_dir ${1}`/${BUILD_ABI:-.}
 }
 
 make_lib_dir()
 {
-  echo `make_api_dir ${1}`/lib
+  echo `make_abi_dir ${1}`/lib
 }
 
 make_include_dir()
 {
-  echo `make_api_dir ${1}`/include
+  echo `make_abi_dir ${1}`/include
 }
 
 root_prefixes()
@@ -108,7 +108,7 @@ root_prefixes()
 
 root_lib_prefixes()
 {
-  echo --prefix=`make_api_dir "${@}"`
+  echo --prefix=`make_abi_dir "${@}"`
 }
 
 filter_disabled_feature()

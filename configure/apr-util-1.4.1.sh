@@ -9,7 +9,7 @@ setup_dependencies \
   zlib-1.2.5 \
 
 trace_and_run ${SOURCE}/apr-util-1.4.1/configure `root_lib_prefixes "apr-util-1.4.1"` \
- --with-apr=`make_api_dir "apr-1.4"`           \
+ --with-apr=`make_abi_dir "apr-1.4"`           \
   --without-berkeley-db                        \
   --without-pgsql                              \
   --without-mysql                              \

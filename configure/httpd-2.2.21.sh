@@ -12,10 +12,10 @@ setup_dependencies \
 
 trace_and_run ${SOURCE}/httpd-2.2.21/configure `root_prefixes "httpd-2.2.21"` \
   --without-rpath                      \
-  --with-apr=`make_api_dir "apr-1.4"` \
-  --with-apr-util=`make_api_dir "apr-util-1.4"` \
-  --with-z=`make_api_dir "zlib-1.2.5"` \
-  --with-ssl=`make_api_dir "openssl-0.9"` \
+  --with-apr=`make_abi_dir "apr-1.4"` \
+  --with-apr-util=`make_abi_dir "apr-util-1.4"` \
+  --with-z=`make_abi_dir "zlib-1.2.5"` \
+  --with-ssl=`make_abi_dir "openssl-0.9"` \
   --enable-shared                      \
   --enable-auth-anon                   \
   --enable-include                     \

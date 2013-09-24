@@ -10,6 +10,6 @@ setup_dependencies \
 trace_and_run ${SOURCE}/libxslt-1.1.26/configure `root_lib_prefixes "libxslt-1.1"` \
   --disable-shared \
   --with-pic \
-  --with-libxml-prefix=`make_api_dir "libxml2-2.7"` \
+  --with-libxml-prefix=`make_abi_dir "libxml2-2.7"` \
   --without-crypto \
   "${@}"

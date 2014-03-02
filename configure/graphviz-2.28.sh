@@ -8,6 +8,7 @@ setup_feature graphviz-2.28.0
 trace_and_run ./configure `root_lib_prefixes "graphviz-2.28.0"` \
   --enable-ruby=yes \
   --enable-perl=no \
+  --enable-python=no \
   --with-pic \
   --enable-swig=yes \
   --enable-tcl=no \

@@ -5,5 +5,5 @@
 
 setup_feature jam-2.5
 
-trace_and_run make CC="${CC}" AR="ar q"
-trace_and_run ./jam0 -sBINDIR="${ROOT}/bin" install
+trace_and_run make CC="${CC}"
+trace_and_run ./jam0 -sBINDIR="`make_top_dir`/bin" install
